@@ -32,7 +32,7 @@ public class LunaBuilder implements ClientModInitializer {
  public static LunaBuilder INSTANCE;
  final ExecutorService io=Executors.newVirtualThreadPerTaskExecutor();
  final int controlPort=Integer.getInteger("lunabuilder.controlPort",28763);
- final HttpClient http=HttpClient.newBuilder().connectTimeout(Duration.ofSeconds(3)).build();
+ final HttpClient http=dev.luna.backend.LoopbackHttp.create();
  volatile JsonObject status=new JsonObject();
  volatile String error="";volatile String runtimeMessage="Starting background services...";
  dev.luna.runtime.BackgroundServices services;

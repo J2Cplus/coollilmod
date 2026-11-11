@@ -1,0 +1,45 @@
+
+> Configure project :
+Fabric Loom: 1.19.4
+
+> Task :clean
+> Task :compileJava
+> Task :processResources
+> Task :classes
+
+> Task :compileClientJava
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :processClientResources NO-SOURCE
+> Task :processIncludeJars
+> Task :sourcesJar
+> Task :clientClasses
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :validateAccessWidener NO-SOURCE
+> Task :check UP-TO-DATE
+> Task :jar
+> Task :compileToolsJava
+> Task :assemble
+> Task :build
+> Task :processToolsResources
+> Task :toolsClasses
+
+> Task :javaBackendCheck
+PASS: 50 Java backend/compiler/security assertions. HTTP world data and model output are test fixtures, not live gameplay or real model generation.
+
+> Task :runtimeSmoke
+Java backend ready. Open your installed Ollama app for local AI; no helper programs are launched.
+Java backend ready. Open your installed Ollama app for local AI; no helper programs are launched.
+PASS: in-process Java service startup, reuse, nonowner shutdown and owner cleanup. No helper process was launched.
+
+> Task :singleJarCheck
+PASS: Fabric Loader 0.20.1 discovers and resolves 49 mod/builtin IDs from exactly one external LunaBuilder JAR, including nested Fabric API modules. No game window or gameplay was launched.
+
+[Incubating] Problems report is available at: file:///workspace/work/publish-coollilmod/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 9s
+12 actionable tasks: 12 executed
