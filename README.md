@@ -1,6 +1,6 @@
 # LunaBuilder — Minecraft Java 26.3 / Fabric
 
-**SECURITY NOTICE — DOWNLOADS WITHDRAWN:** Windows Defender reported the Windows package as a severe Trojan. Do not run or allow these builds or add antivirus exclusions. The cause is not established. Current binary downloads are withdrawn; previous copies in Git history are not endorsed. See `downloads/NOTICE.md`. The source is retained for audit.
+**SECURITY NOTICE — DOWNLOADS WITHDRAWN:** Windows Defender reported both the Windows ZIP and the all-in-one JAR as Trojan:Script/Wacatac.B!ml. Do not run or allow these builds or add antivirus exclusions. The cause is not established. Current binary downloads are withdrawn; previous copies in Git history are not endorsed. See `downloads/NOTICE.md`. The source is retained for audit.
 
 This is a compiled development preview with a native Minecraft screen, local companion, declarative build compiler, and an actual Fabric-client builder controller. **It has not passed a live gameplay test and is not a fully verified implementation of the entire requested specification.** Use a disposable creative test world first. See `VALIDATION.md` for exact evidence and limitations.
 
