@@ -1,6 +1,6 @@
 # LunaBuilder — Minecraft Java 26.3 / Fabric
 
-**Single-JAR install:** download **LunaBuilder-all-in-one.jar** from this repository's release page or `downloads` folder. It includes Fabric API, the companion, and portable Windows Node. Put only that JAR into a Minecraft 26.3 Fabric profile's `mods` folder; replace any older LunaBuilder JAR. No ZIP extraction or startup script is required. Ollama must already be installed with a local chat model.
+**SECURITY NOTICE — DOWNLOADS WITHDRAWN:** Windows Defender reported the Windows package as a severe Trojan. Do not run or allow these builds or add antivirus exclusions. The cause is not established. Current binary downloads are withdrawn; previous copies in Git history are not endorsed. See `downloads/NOTICE.md`. The source is retained for audit.
 
 This is a compiled development preview with a native Minecraft screen, local companion, declarative build compiler, and an actual Fabric-client builder controller. **It has not passed a live gameplay test and is not a fully verified implementation of the entire requested specification.** Use a disposable creative test world first. See `VALIDATION.md` for exact evidence and limitations.
 
