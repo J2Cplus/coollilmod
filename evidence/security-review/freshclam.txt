@@ -1,0 +1,21 @@
+ClamAV update process started at Wed Nov 11 03:47:52 2026
+WARNING: Can't query current.cvd.clamav.net
+WARNING: Invalid DNS reply. Falling back to HTTP mode.
+Trying to retrieve CVD header from https://database.clamav.net/daily.cvd
+OK
+daily database available for download (remote version: 28179)
+Testing database: '/workspace/work/security-audit/database/tmp.b84bb45fac/daily.cvd' ...
+Database test passed.
+daily.cvd updated (version: 28179, sigs: 355854, f-level: 90, builder: svc.clamav-publisher)
+Trying to retrieve CVD header from https://database.clamav.net/main.cvd
+OK
+main database available for download (remote version: 63)
+Testing database: '/workspace/work/security-audit/database/tmp.b84bb45fac/main.cvd' ...
+Database test passed.
+main.cvd updated (version: 63, sigs: 3287027, f-level: 90, builder: tomjudge)
+Trying to retrieve CVD header from https://database.clamav.net/bytecode.cvd
+OK
+bytecode database available for download (remote version: 339)
+Testing database: '/workspace/work/security-audit/database/tmp.b84bb45fac/bytecode.cvd' ...
+Database test passed.
+bytecode.cvd updated (version: 339, sigs: 80, f-level: 90, builder: nrandolp)
