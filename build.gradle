@@ -6,6 +6,7 @@ dependencies {
  minecraft "com.mojang:minecraft:${project.minecraft_version}"
  implementation "net.fabricmc:fabric-loader:${project.loader_version}"
  implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+ include "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
 tasks.withType(JavaCompile).configureEach { options.release = 25 }
 java { withSourcesJar(); sourceCompatibility = JavaVersion.VERSION_25; targetCompatibility = JavaVersion.VERSION_25 }
@@ -78,3 +79,12 @@ tasks.named('sourcesJar') {
 }
 
 tasks.named('jar') { from('LICENSE') { rename { 'LICENSE-lunabuilder' } } }
+
+tasks.register('singleJarCheck', JavaExec) {
+ group = 'verification'
+ description = 'Resolve the actual bundled Fabric API from one external mod JAR using Fabric Loader'
+ dependsOn toolsClasses, jar
+ classpath = sourceSets.tools.runtimeClasspath
+ mainClass = 'dev.luna.tools.SingleJarCheck'
+ args tasks.named('jar').get().archiveFile.get().asFile.absolutePath
+}

@@ -1,2 +1,3 @@
 8d968aeec3fdda7df97dca1127d7795e3de65cafbdfab07b938949ea4619a837  LunaBuilder-Windows.zip
-b46468701de2c44c12a980f54233a5ac49137b3e89784aa1f60492b0f625e938  lunabuilder-1.0.0.jar
+05491a0eed27acae814fec59239a14ee32d3f35eee1c9e648ce29127cfc58ed6  LunaBuilder-all-in-one.jar
+05491a0eed27acae814fec59239a14ee32d3f35eee1c9e648ce29127cfc58ed6  lunabuilder-1.0.0.jar

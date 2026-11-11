@@ -1,0 +1,40 @@
+
+> Configure project :
+Fabric Loom: 1.19.4
+
+> Task :compileJava UP-TO-DATE
+> Task :prepareWindowsRuntime
+> Task :bundleRuntime
+> Task :processResources UP-TO-DATE
+> Task :classes UP-TO-DATE
+> Task :compileClientJava UP-TO-DATE
+> Task :processClientResources NO-SOURCE
+> Task :processIncludeJars
+> Task :sourcesJar UP-TO-DATE
+> Task :clientClasses UP-TO-DATE
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :validateAccessWidener NO-SOURCE
+> Task :check UP-TO-DATE
+> Task :compileToolsJava
+> Task :processToolsResources NO-SOURCE
+> Task :toolsClasses
+
+> Task :runtimeSmoke
+host: Starting LunaBuilder background services...
+host: Ollama: Ollama executable not found. Install/open Ollama, or set LUNA_OLLAMA_EXECUTABLE to its full path.
+builder: Starting LunaBuilder background services...
+builder: Ollama: Ollama executable not found. Install/open Ollama, or set LUNA_OLLAMA_EXECUTABLE to its full path.
+PASS: embedded extraction, automatic real Node startup, shared clients, path spaces, and last-client cleanup.
+
+> Task :jar
+> Task :assemble
+> Task :build
+
+> Task :singleJarCheck
+PASS: Fabric Loader 0.20.1 discovers and resolves 49 mod/builtin IDs from exactly one external LunaBuilder JAR, including nested Fabric API modules. No game window or gameplay was launched.
+
+BUILD SUCCESSFUL in 20s
+11 actionable tasks: 7 executed, 4 up-to-date

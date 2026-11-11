@@ -7,7 +7,7 @@ Checked during the November 9, 2026 (Pacific time) build session. No Minecraft d
 | Minecraft Java | **26.3**. Mojang's version manifest lists it as the latest release. The version JSON specifies `java-runtime-epsilon`, major Java **25**. Actual client/common JARs were downloaded by Loom and compiled against. Protocol number reported in minecraft-data's version list: **777**. |
 | Java build runtime | Oracle JDK **25.0.5.0.3**, Linux x64. User game/source requirement: Java **25**. |
 | Fabric Loader | **0.20.1**, listed stable by Fabric metadata and resolved by Gradle. |
-| Fabric API | **0.166.0+26.3**, from Fabric's Maven metadata; dependency resolution and compilation succeed. Windows bundle includes this dependency JAR. |
+| Fabric API | **0.166.0+26.3**, from Fabric's Maven metadata; dependency resolution and compilation succeed. The all-in-one mod nests this dependency JAR using Loom include, preserving its module metadata and license. |
 | Loom | **1.19.4**, released Maven artifact. The plugin ID is `net.fabricmc.fabric-loom`. |
 | Gradle | **9.8.2**, official Fabric 26.3 example wrapper version; distribution SHA-256 is pinned in the wrapper properties. |
 | Names / mappings | The actual unobfuscated 26.3 named game artifacts are used directly by Loom. No old Yarn mappings or intermediary method names are guessed. |
@@ -43,3 +43,5 @@ Hugging Face update checked November 10, 2026 (Pacific time):
 Local Ollama update: official chat and model-list documentation retrieved successfully at https://docs.ollama.com/api/chat and https://docs.ollama.com/api/tags. Native `/api/show` is used for capability checks. Tests validate requests against a real loopback HTTP fixture; actual Ollama and the user's model inventory have not been accessed. Prior Hugging Face evidence above is historical and that provider is no longer the new-install default.
 
 Automatic startup update: the distributable mod now embeds companion source plus Node 24.22.1 Windows x64 and its upstream license. Runtime files are hash-checked before use and cached in a versioned Minecraft-instance directory. Java process startup uses an argument list (no shell) off the render thread. Global per-user/port startup locking prevents duplicate launches; per-client secret leases coordinate shared-service cleanup. Installed Ollama is started only if its local service is unavailable; no model is pulled. Windows executable discovery is implemented but was not exercised on Windows.
+
+Single-JAR update: Fabric API 0.166.0+26.3 is now included as a nested dependency in LunaBuilder, retaining all nested modules and Apache license. Actual Fabric Loader discovery/resolution passed with only one external JAR and resolved 49 mod/builtin IDs. The companion and Node remain embedded resources. Fabric Loader and Minecraft are installed via the launcher rather than bundled game binaries.

@@ -1,22 +1,14 @@
 # LunaBuilder — Minecraft Java 26.3 / Fabric
 
-**Download the compiled mod:** open this repository's **Releases** section and choose the LunaBuilder preview. Use the JAR if Fabric API is already installed, or the Windows ZIP for both mods and setup notes. The same files are also in the `downloads` folder; open a file and choose Download raw file. Launching Minecraft starts the embedded companion and local Ollama automatically.
+**Single-JAR install:** download **LunaBuilder-all-in-one.jar** from this repository's release page or `downloads` folder. It includes Fabric API, the companion, and portable Windows Node. Put only that JAR into a Minecraft 26.3 Fabric profile's `mods` folder; replace any older LunaBuilder JAR. No ZIP extraction or startup script is required. Ollama must already be installed with a local chat model.
 
 This is a compiled development preview with a native Minecraft screen, local companion, declarative build compiler, and an actual Fabric-client builder controller. **It has not passed a live gameplay test and is not a fully verified implementation of the entire requested specification.** Use a disposable creative test world first. See `VALIDATION.md` for exact evidence and limitations.
 
 ## Windows 11 first run
 
-1. Extract the complete Windows ZIP to a local folder. Keep its `companion`, `runtime`, and `mods` folders together. Paths containing spaces are supported.
+1. Download the all-in-one JAR. You do not need the older Windows ZIP or its separate companion/runtime folders. Paths containing spaces are supported.
 2. Install Fabric Loader **0.20.1 for Minecraft 26.3** using the installer from https://fabricmc.net/use/installer/. Select that profile in Minecraft Launcher. Minecraft 26.3 needs **Java 25**; the official launcher normally supplies its game runtime.
-3. Put both JARs from `mods` into your host instance's mods folder. Alternatively run PowerShell in the extracted folder:
-   ```powershell
-   .\install-mod.ps1
-   ```
-   For a custom profile:
-   ```powershell
-   .\install-mod.ps1 -ModsFolder 'D:\Minecraft Profiles\Creative\mods'
-   ```
-   Use the same Minecraft, Fabric, and mod versions in the builder instance. Do not install two Fabric API versions in one instance.
+3. Download `downloads/LunaBuilder-all-in-one.jar` and put that single file into your Minecraft instance's `mods` folder. **Fabric API is nested inside it**, so a separate Fabric API download is not required. Remove the previous LunaBuilder JAR instead of keeping two copies. Use this same all-in-one mod JAR in the separately authenticated builder instance.
 4. **Launch Minecraft normally. No companion script is required.** The mod JAR now includes the companion code and a checksum-verified portable Windows x64 Node runtime. After the game starts, LunaBuilder extracts its versioned runtime under the Minecraft instance's `config/lunabuilder/runtime`, starts the companion in the background, reuses your running Ollama or starts your installed `ollama serve`, and discovers an installed local chat model. It never downloads a model or falls back to cloud inference.
 5. Open your own **creative singleplayer** world. Press **B**, then **Start local builder**. Controls → Key Binds → LunaBuilder lets you change B. Open Preview to see the pairing code.
 6. Launch a **second, separate Minecraft 26.3 Fabric instance with a different authenticated Minecraft account** and a different game directory. The mod in that instance is the real bot runtime. From its title screen, click **LunaBuilder** in the top-left corner and enter the host's code. It connects to the host's actual Minecraft port over **127.0.0.1**. Keep both instances running. The host gives creative mode only to the paired name after verifying the authenticated player's connection is loopback; it does not grant operator permissions or change server authentication.
@@ -89,3 +81,7 @@ node --test 'test/*.test.mjs'
 The Gradle wrapper pins 9.8.2 and verifies its distribution SHA-256. The source ZIP has no Minecraft binaries or secret configuration. The companion has no third-party npm runtime dependencies. `exportRegistry` bootstraps actual 26.3 registries without a graphics window; the exported fixture is also included for standalone compiler tests. See `COMPATIBILITY.md` and `VALIDATION.md`.
 
 `gradlew runtimeSmoke` separately exercises embedded runtime extraction, a real companion process, two client leases, path names containing spaces, and last-client shutdown without a Minecraft window. Source builds automatically fetch the pinned Windows Node runtime if missing, validate its official SHA-256, and embed its license. The source JAR excludes the binary; the distributable mod JAR includes it.
+
+## Single-JAR packaging verification
+
+`gradlew singleJarCheck` uses actual Fabric Loader 0.20.1 metadata discovery and dependency resolution with a mods directory containing exactly one LunaBuilder JAR. It resolves 49 mod/builtin IDs, including Fabric API and its nested API modules. This check does not start a game window or establish gameplay correctness. Fabric Loader itself belongs in the launcher profile; the mod JAR does not replace Minecraft, the loader bootstrap, your installed Ollama/model files, or the separately authenticated builder login.
