@@ -1,0 +1,14 @@
+{
+  "controlPort": 28763,
+  "modelLabel": "Luna \u00b7 local Ollama",
+  "providerUrl": "http://127.0.0.1:11434/api/chat",
+  "modelId": "",
+  "apiKeyEnv": "",
+  "timeoutMs": 180000,
+  "maxOutputTokens": 8192,
+  "placementsPerSecond": 4,
+  "botExecutable": "",
+  "botArgs": [],
+  "provider": "ollama",
+  "ollamaContextTokens": 32768
+}

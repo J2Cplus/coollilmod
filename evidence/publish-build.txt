@@ -1,0 +1,42 @@
+
+> Configure project :
+Fabric Loom: 1.19.4
+
+> Task :compileJava
+> Task :prepareWindowsRuntime
+> Task :bundleRuntime
+> Task :processResources
+> Task :classes
+
+> Task :compileClientJava
+Note: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :processClientResources NO-SOURCE
+> Task :processIncludeJars
+> Task :jar
+> Task :sourcesJar
+> Task :assemble
+> Task :clientClasses
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :validateAccessWidener NO-SOURCE
+> Task :check UP-TO-DATE
+> Task :build
+> Task :compileToolsJava
+> Task :processToolsResources NO-SOURCE
+> Task :toolsClasses
+
+> Task :runtimeSmoke
+host: Starting LunaBuilder background services...
+host: Ollama: Ollama executable not found. Install/open Ollama, or set LUNA_OLLAMA_EXECUTABLE to its full path.
+builder: Starting LunaBuilder background services...
+builder: Ollama: Ollama executable not found. Install/open Ollama, or set LUNA_OLLAMA_EXECUTABLE to its full path.
+PASS: embedded extraction, automatic real Node startup, shared clients, path spaces, and last-client cleanup.
+
+[Incubating] Problems report is available at: file:///workspace/work/publish-coollilmod/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 20s
+10 actionable tasks: 10 executed

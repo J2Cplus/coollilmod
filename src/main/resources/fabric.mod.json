@@ -1,0 +1,3 @@
+{
+ "schemaVersion":1,"id":"lunabuilder","version":"1.0.0","name":"LunaBuilder","description":"Native build planning and a paired creative Fabric builder client.","environment":"client","entrypoints":{"client":["dev.luna.LunaBuilder"]},"depends":{"fabricloader":">=0.20.1","minecraft":"26.3","java":">=25","fabric-api":">=0.166.0+26.3"},"license":"MIT"
+}

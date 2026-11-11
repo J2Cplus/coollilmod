@@ -1,0 +1,39 @@
+✔ fixture compiles and schedules against exported Minecraft 26.3 registry (8.388079ms)
+✔ real vanilla state values validated (2.43603ms)
+✔ block entities remain excluded (0.167429ms)
+✔ real HTTP pairing, preview, scheduling, pause, journal persistence, conditional undo, session isolation (396.884594ms)
+✔ fixture is deterministic and bounded (11.599615ms)
+✔ transforms and state orientation (0.532283ms)
+✔ cycles rejected (0.601196ms)
+✔ limits reject oversized volume (51.841432ms)
+✔ unsafe and unknown blocks rejected (0.427537ms)
+✔ contradictory overlaps require explicit replacement (2.206649ms)
+✔ invalid state properties and fractional coordinates rejected (16.574809ms)
+✔ dimensions constrain plan (1.591622ms)
+✔ Local defaults migrate empty legacy config while preserving custom providers (1.240178ms)
+✔ HF token has an actionable missing-credential error (0.942395ms)
+✔ HF brief then JSON plan uses max_tokens and real schema validation (44.246464ms)
+✔ HF permission errors are useful and never echo provider body or token (0.941173ms)
+✔ manual companions never shut down from lease expiration (1.843056ms)
+✔ two clients share services and last release shuts them down (0.520475ms)
+✔ crashed clients expire while active heartbeat keeps service alive (0.24869ms)
+✔ orphan startup exits and bad release secrets cannot stop another client (0.322741ms)
+✔ owned Ollama alone is stopped; existing Ollama has no owned process to kill (0.324553ms)
+✔ reuse running local Ollama and discover model without spawning a process (94.278538ms)
+✔ starts a missing Ollama daemon in background and cleans up only its own child (566.793889ms)
+✔ discovers exact installed local chat model without selecting cloud or embedding models (68.640935ms)
+✔ real local HTTP adapter uses no Authorization and requests JSON only for design (20.840977ms)
+✔ rejects missing selected model instead of downloading it (5.04701ms)
+✔ rejects cloud-only model installation without making a cloud call (6.802276ms)
+✔ Ollama preset rejects non-loopback services (2.497832ms)
+✔ support order grows connected blocks without per-step AI (2.420688ms)
+✔ unsupported components fail before building (0.666463ms)
+✔ air removals need no support (0.578702ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2029.982388

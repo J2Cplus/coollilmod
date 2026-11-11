@@ -1,0 +1,4 @@
+Minecraft 26.3 Fabric launch attempted. Stopped at graphics initialization:
+java.lang.IllegalStateException: Unable to initialize SDL: No available video device
+No live world, bot login, movement, placement or UI appearance test was completed.
+cloud-agent-desktop --help: Orbit desktop is unavailable

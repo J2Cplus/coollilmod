@@ -1,0 +1,42 @@
+{
+  "source": "https://router.huggingface.co/v1/models",
+  "checkedDatePacific": "2026-11-10",
+  "model": {
+    "id": "Qwen/Qwen3.6-35B-A3B",
+    "object": "model",
+    "created": 1776232759,
+    "owned_by": "Qwen",
+    "architecture": {
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "output_modalities": [
+        "text"
+      ]
+    },
+    "providers": [
+      {
+        "provider": "featherless-ai",
+        "status": "live",
+        "is_free": false,
+        "is_model_author": false
+      },
+      {
+        "provider": "deepinfra",
+        "status": "live",
+        "context_length": 262144,
+        "pricing": {
+          "input": 0.1,
+          "output": 0.95
+        },
+        "is_free": false,
+        "supports_tools": true,
+        "supports_structured_output": true,
+        "first_token_latency_ms": 485.4,
+        "throughput": 23.71717439541009,
+        "is_model_author": false
+      }
+    ]
+  }
+}

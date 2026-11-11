@@ -1,0 +1,80 @@
+plugins {
+ id 'net.fabricmc.fabric-loom' version "${loom_version}"
+}
+loom { splitEnvironmentSourceSets(); mods { lunabuilder { sourceSet sourceSets.main; sourceSet sourceSets.client } } }
+dependencies {
+ minecraft "com.mojang:minecraft:${project.minecraft_version}"
+ implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+ implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+tasks.withType(JavaCompile).configureEach { options.release = 25 }
+java { withSourcesJar(); sourceCompatibility = JavaVersion.VERSION_25; targetCompatibility = JavaVersion.VERSION_25 }
+base { archivesName = 'lunabuilder' }
+
+sourceSets { tools { compileClasspath += sourceSets.main.runtimeClasspath; runtimeClasspath += sourceSets.main.runtimeClasspath } }
+
+tasks.register('exportRegistry', JavaExec) {
+ group = 'verification'
+ description = 'Export actual Minecraft 26.3 block IDs and state properties for companion tests'
+ dependsOn toolsClasses
+ classpath = sourceSets.tools.runtimeClasspath
+ mainClass = 'dev.luna.tools.RegistryExport'
+ args layout.buildDirectory.file('registry-26.3.json').get().asFile.absolutePath
+}
+
+// Embed an offline Windows runtime. The source build downloads it only when missing,
+// and checks the pinned official release digest before packaging or extraction.
+def nodeDigest = 'd702daa815eabbff763c7d3808e235cf031cf2ca70211b56847bc72f51e240e5'
+def nodeBinary = layout.projectDirectory.file('runtime/node.exe')
+tasks.register('prepareWindowsRuntime') {
+ outputs.files(nodeBinary, layout.projectDirectory.file('runtime/LICENSE.txt'))
+ doLast {
+  def binary = nodeBinary.asFile
+  binary.parentFile.mkdirs()
+  if (!binary.exists()) new URI('https://nodejs.org/dist/v24.22.1/win-x64/node.exe').toURL().withInputStream { input -> binary.withOutputStream { it << input } }
+  def digest = java.security.MessageDigest.getInstance('SHA-256')
+  binary.withInputStream { input -> byte[] buffer = new byte[65536]; int n; while ((n = input.read(buffer)) > 0) digest.update(buffer, 0, n) }
+  if (digest.digest().encodeHex().toString() != nodeDigest) throw new GradleException('Portable Node checksum mismatch')
+  def license = file('runtime/LICENSE.txt')
+  if (!license.exists()) new URI('https://raw.githubusercontent.com/nodejs/node/v24.22.1/LICENSE').toURL().withInputStream { input -> license.withOutputStream { it << input } }
+ }
+}
+def bundledRuntime = layout.buildDirectory.dir('generated/runtimeResources')
+tasks.register('bundleRuntime') {
+ dependsOn 'prepareWindowsRuntime'
+ inputs.files(fileTree('companion') { include '*.mjs'; include 'config.example.json'; include 'package.json' }, nodeBinary, file('runtime/LICENSE.txt'))
+ outputs.dir(bundledRuntime)
+ doLast {
+  def target = bundledRuntime.get().dir('lunabuilder-runtime').asFile
+  delete target
+  copy { from('companion') { include '*.mjs'; include 'config.example.json'; include 'package.json' }; into new File(target, 'companion') }
+  copy { from 'runtime/node.exe', 'runtime/LICENSE.txt'; into new File(target, 'runtime') }
+  def files = fileTree(target).files.sort { it.path }
+  def manifest = new Properties()
+  manifest.setProperty('files', files.collect { target.toPath().relativize(it.toPath()).toString().replace('\\','/') }.join(','))
+  files.each { artifact ->
+   def digest = java.security.MessageDigest.getInstance('SHA-256')
+   artifact.withInputStream { input -> byte[] buffer = new byte[65536]; int n; while ((n = input.read(buffer)) > 0) digest.update(buffer,0,n) }
+   manifest.setProperty(target.toPath().relativize(artifact.toPath()).toString().replace('\\','/'), digest.digest().encodeHex().toString())
+  }
+  // Deterministic manifest: no timestamp or machine paths.
+  new File(target,'manifest.properties').text = manifest.stringPropertyNames().sort().collect { "${it}=${manifest.getProperty(it)}" }.join('\n')+'\n'
+ }
+}
+sourceSets.main.resources.srcDir(bundledRuntime)
+tasks.named('processResources') { dependsOn 'bundleRuntime' }
+
+tasks.register('runtimeSmoke', JavaExec) {
+ group = 'verification'
+ description = 'Launch embedded companion, share it across two simulated mod lifecycles, and check cleanup'
+ dependsOn toolsClasses, processResources
+ classpath = sourceSets.tools.runtimeClasspath
+ mainClass = 'dev.luna.tools.RuntimeSmokeCheck'
+}
+
+tasks.named('sourcesJar') {
+ dependsOn 'bundleRuntime'
+ exclude 'lunabuilder-runtime/**'
+}
+
+tasks.named('jar') { from('LICENSE') { rename { 'LICENSE-lunabuilder' } } }

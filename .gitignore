@@ -1,0 +1,13 @@
+.gradle/
+build/
+run/
+node_modules/
+companion/config.json
+companion/data/
+companion/logs/
+companion/running.json
+/runtime/
+*.log
+.env*
+
+/logs/

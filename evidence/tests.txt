@@ -1,0 +1,43 @@
+
+> lunabuilder-companion@1.0.0 test
+> node --test test/*.test.mjs
+
+✔ fixture compiles and schedules against exported Minecraft 26.3 registry (11.781722ms)
+✔ real vanilla state values validated (1.853833ms)
+✔ block entities remain excluded (0.196421ms)
+✔ real HTTP pairing, preview, scheduling, pause, journal persistence, conditional undo, session isolation (351.105697ms)
+✔ fixture is deterministic and bounded (6.653976ms)
+✔ transforms and state orientation (0.252033ms)
+✔ cycles rejected (0.451538ms)
+✔ limits reject oversized volume (32.833472ms)
+✔ unsafe and unknown blocks rejected (0.347864ms)
+✔ contradictory overlaps require explicit replacement (0.979749ms)
+✔ invalid state properties and fractional coordinates rejected (0.321125ms)
+✔ dimensions constrain plan (0.75682ms)
+✔ Local defaults migrate empty legacy config while preserving custom providers (0.762438ms)
+✔ HF token has an actionable missing-credential error (0.721798ms)
+✔ HF brief then JSON plan uses max_tokens and real schema validation (30.791711ms)
+✔ HF permission errors are useful and never echo provider body or token (0.58118ms)
+✔ manual companions never shut down from lease expiration (1.063033ms)
+✔ two clients share services and last release shuts them down (0.27017ms)
+✔ crashed clients expire while active heartbeat keeps service alive (0.17563ms)
+✔ orphan startup exits and bad release secrets cannot stop another client (0.186036ms)
+✔ owned Ollama alone is stopped; existing Ollama has no owned process to kill (0.150833ms)
+✔ reuse running local Ollama and discover model without spawning a process (56.345862ms)
+✔ starts a missing Ollama daemon in background and cleans up only its own child (535.722522ms)
+✔ discovers exact installed local chat model without selecting cloud or embedding models (29.735568ms)
+✔ real local HTTP adapter uses no Authorization and requests JSON only for design (16.674813ms)
+✔ rejects missing selected model instead of downloading it (3.437717ms)
+✔ rejects cloud-only model installation without making a cloud call (2.708587ms)
+✔ Ollama preset rejects non-loopback services (0.265754ms)
+✔ support order grows connected blocks without per-step AI (2.169931ms)
+✔ unsupported components fail before building (0.510495ms)
+✔ air removals need no support (0.204403ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1590.64365
