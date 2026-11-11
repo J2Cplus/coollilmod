@@ -1,6 +1,6 @@
 # LunaBuilder — Minecraft Java 26.3 / Fabric
 
-**Download the compiled mod:** open this repository's **Releases** section and choose the LunaBuilder preview. Use the JAR if Fabric API is already installed, or the Windows ZIP for both mods and setup notes. Launching Minecraft starts the embedded companion and local Ollama automatically.
+**Download the compiled mod:** open this repository's **Releases** section and choose the LunaBuilder preview. Use the JAR if Fabric API is already installed, or the Windows ZIP for both mods and setup notes. The same files are also in the `downloads` folder; open a file and choose Download raw file. Launching Minecraft starts the embedded companion and local Ollama automatically.
 
 This is a compiled development preview with a native Minecraft screen, local companion, declarative build compiler, and an actual Fabric-client builder controller. **It has not passed a live gameplay test and is not a fully verified implementation of the entire requested specification.** Use a disposable creative test world first. See `VALIDATION.md` for exact evidence and limitations.
 
